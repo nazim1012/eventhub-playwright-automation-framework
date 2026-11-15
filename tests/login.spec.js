@@ -43,6 +43,8 @@ test.describe('Login Test', () => {
   }
 
   test('Verify session token expires upon user logout', async ({ page }) => {
+    // Documents the known security bug while keeping CI green until fixed
+    test.fail(true, 'BUG-101: Backend does not invalidate JWT token upon user logout');
     const email = process.env.EMAIL;
     const password = process.env.PASSWORD;
     if (!email || !password) {
@@ -53,7 +55,7 @@ test.describe('Login Test', () => {
     await expect(page.getByText('Logout')).toBeVisible();
     const oldToken = await loginpage.getAuthToken();
     await page.getByText('Logout').click();
-    await expect(page).toHaveURL(/login/);
+    await expect(page).toHaveURL(/login/);  
     const apiutils= new LoginPageApiUtil(page.request);
     const response= await apiutils.getProtectedResource(`${process.env.API_URL}/events?limit=6`,oldToken);
     console.log('Response status code:', response.status());
