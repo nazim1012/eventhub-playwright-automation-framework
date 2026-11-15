@@ -55,6 +55,10 @@ dependent on existing application data.
 
 eventhub-playwright-automation-framework/
 │
+├── .github/
+│   └── workflows/
+│       └── playwright.yml
+│
 ├── pageobjects/
 │   ├── eventPage.js
 │   ├── loginPage.js
@@ -77,50 +81,27 @@ eventhub-playwright-automation-framework/
 │   ├── createEventApi.js
 │   └── loginApi_Util.js
 │
+├── .env
 ├── .env.example
 ├── .gitignore
 ├── package.json
 └── playwright.config.js
-``` 
+# Continuous Integration – GitHub Actions
+  Implemented GitHub Actions to automatically execute the Playwright test suite when code is pushed to the repository.
+# The workflow is configured in:
+  .github/workflows/playwright.yml
 
-## Test Scenarios Covered
+# The CI workflow handles:
 
-### 1. User Registration
+- Checking out the repository.
+- Setting up Node.js.
+- Installing project dependencies.
+- Installing Playwright browsers.
+- Executing automated test cases.
+- Publishing test execution results as workflow artifacts, where configured.
+- This helps identify test failures whenever new code changes are pushed.
 
--   Verify registration page elements.
--   Check required-field validation.
--   Test invalid email formats.
--   Check password complexity requirements.
--   Verify password and confirm-password mismatch.
--   Test successful account registration.
-
-### 2. Login
-
--   Verify login page elements.
--   Check password masking.
--   Test login with valid credentials.
--   Test multiple invalid credential combinations using JSON test data.
--   Check whether a previously captured authentication token can access
-    protected APIs after logout.
-
-### 3. Events
-
--   Search for events by name.
--   Filter events by category.
--   Filter events by city.
--   Verify the Clear Filters functionality.
--   Book an event and validate the price calculation.
--   Verify the booking confirmation message.
--   Mock event API responses to check banner visibility when different
-    numbers of events are returned.
-
-### 4. My Bookings
-
--   View booking details.
--   Verify booking information.
--   Cancel a booking.
--   Create test events through the API for booking scenarios.
--   Clean up events created by the test.
+Note: The post-logout token scenario is currently marked as an expected failure while the backend behaviour is investigated. An expected failure can therefore appear in a successful CI workflow run.
 
 ## Getting Started
 
