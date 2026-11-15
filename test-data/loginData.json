@@ -1,0 +1,25 @@
+
+{
+    "invalidLogin": [
+        {
+            "email": "wronguser@gmail.com",
+            "password": "Test@12345"
+        },
+        {
+            "email": "your_registered_email",
+            "password": "Wrong@12345"
+        },
+        {
+            "email": "wronguser@gmail.com",
+            "password": "Wrong@12345"
+        },
+        {
+            "email": "",
+            "password": "Wrong@12345"
+        },
+        {
+            "email": "wronguser@gmail.com",
+            "password": ""
+        }
+    ]
+}

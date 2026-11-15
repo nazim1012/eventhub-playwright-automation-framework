@@ -1,0 +1,21 @@
+
+{
+    "validRegistration": {
+        "email": "xyz.test@example.com",
+        "password": "Test@12345",
+        "confirmPassword": "Test@12345"
+    },
+    "invalidEmails": [
+        "test",
+        "Test@",
+        "@gmail.com",
+        "Test@gmail",
+        "test gmail.com"
+    ],
+    "weakPasswords": [
+        "abc",
+        "abcdefgh",
+        "Abcdefgh",
+        "Abcdefg1"
+    ]
+}
